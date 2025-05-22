@@ -1,7 +1,6 @@
-import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createServer, Server } from 'miragejs';
 import UserList from '../components/UserList';
 import { configureStore } from '@reduxjs/toolkit';
@@ -45,25 +44,26 @@ describe('UserList', () => {
     // Render component with store and router providers
     render(
       <Provider store={store}>
-        <BrowserRouter>
-          <UserList />
-        </BrowserRouter>
+        <RouterProvider
+          router={createBrowserRouter([{ path: '/', element: <UserList /> }])}
+          future={{ v7_startTransition: true }}
+        />
       </Provider>
     );
 
     // Initially should show loading
-    expect(screen.getByText('Loading users...')).toBeInTheDocument();
+    expect(screen.getByText('Loading users...')).toBeTruthy();
 
     // Wait for users to load
     await waitFor(() => {
-      expect(screen.getByText('John Doe')).toBeInTheDocument();
-      expect(screen.getByText('Jane Smith')).toBeInTheDocument();
+      expect(screen.getByText('John Doe')).toBeTruthy();
+      expect(screen.getByText('Jane Smith')).toBeTruthy();
     });
 
     // Check if user details are displayed
-    expect(screen.getByText(/john@example.com/)).toBeInTheDocument();
-    expect(screen.getByText(/jane@example.com/)).toBeInTheDocument();
-    expect(screen.getByText(/admin/)).toBeInTheDocument();
-    expect(screen.getByText(/user/)).toBeInTheDocument();
+    expect(screen.getByText(/john@example.com/)).toBeTruthy();
+    expect(screen.getByText(/jane@example.com/)).toBeTruthy();
+    expect(screen.getByText(/admin/)).toBeTruthy();
+    expect(screen.getByText(/user/)).toBeTruthy();
   });
 });

@@ -9,10 +9,11 @@ import {
   fetchUserByIdFailure,
 } from './slice';
 import type { User } from '@/common/types/user';
+import { API_BASE_URL } from '@/common/utils/env';
 
 // API calls would normally be in a separate file, but for simplicity, we'll define them here
 const fetchUsersApi = async (): Promise<User[]> => {
-  const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/users`);
+  const response = await fetch(`${API_BASE_URL}/users`);
   if (!response.ok) {
     throw new Error('Failed to fetch users');
   }
@@ -20,7 +21,7 @@ const fetchUsersApi = async (): Promise<User[]> => {
 };
 
 const fetchUserByIdApi = async (id: string): Promise<User> => {
-  const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/users/${id}`);
+  const response = await fetch(`${API_BASE_URL}/users/${id}`);
   if (!response.ok) {
     throw new Error(`Failed to fetch user with id ${id}`);
   }
