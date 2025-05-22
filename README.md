@@ -1,6 +1,6 @@
-# React + TypeScript + Vite
+# Feature-Based Architecture Example
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates a modular, feature-based architecture for React applications using Redux Toolkit, Redux-Saga, React Router, and MirageJS. It follows the guidelines outlined in `.junie/guidelines.md`.
 
 ## Getting Started
 
@@ -27,6 +27,73 @@ To build the project:
 ```bash
 pnpm build
 ```
+
+To run tests:
+
+```bash
+pnpm test
+```
+
+## Project Structure
+
+This project follows a feature-based architecture, where code is organized by feature rather than by type. This makes it easier to understand and maintain the codebase, as all related code is located in the same directory.
+
+```
+src/
+  ├── app/                  # Application setup
+  │   ├── store.ts          # Redux store configuration
+  │   └── rootSaga.ts       # Root saga
+  │
+  ├── common/               # Shared code
+  │   ├── types/            # Shared types and interfaces
+  │   ├── models/           # Shared models
+  │   └── utils/            # Shared utilities
+  │
+  ├── features/             # Feature modules
+  │   ├── users/            # Users feature
+  │   │   ├── components/   # React components
+  │   │   ├── hooks/        # Custom hooks
+  │   │   ├── tests/        # Tests
+  │   │   ├── routes.tsx    # Feature routes
+  │   │   ├── slice.ts      # Redux slice
+  │   │   └── saga.ts       # Redux-Saga
+  │   └── home/             # Home feature
+  │
+  ├── mirage/               # Mock API server
+  │   ├── models.ts         # Data models
+  │   ├── factories.ts      # Data factories
+  │   ├── seeds.ts          # Initial data
+  │   └── routes.ts         # API endpoints
+  │
+  └── routes/               # Routing
+      └── index.tsx         # Centralized routes
+```
+
+## Features
+
+### Feature-Based Structure
+Code is organized by feature, not by type. Each feature has its own directory with all related components, hooks, routes, Redux slice, and sagas.
+
+### Redux Toolkit + Redux-Saga
+State management with side effects. Each feature has its own Redux slice and saga, which are combined in the root store and root saga.
+
+### React Router
+Centralized routing with feature-specific route definitions. Each feature exports its routes, which are combined in the centralized routing system.
+
+### MirageJS
+Mock API server for development and testing. The mock server is initialized in development mode if the `VITE_USE_MOCKS` environment variable is set to `true`.
+
+## Example Features
+
+### Users
+The users feature demonstrates a complete implementation of the feature-based architecture. It includes:
+
+- Components for displaying a list of users and user details
+- A custom hook for accessing user-related functionality
+- A Redux slice for managing user state
+- A saga for handling side effects like fetching users from the API
+- Routes for navigating to the user list and user details
+- Tests for the components
 
 Currently, two official plugins are available:
 
