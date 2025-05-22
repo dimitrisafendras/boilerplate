@@ -1,8 +1,5 @@
-import { Server } from 'miragejs';
-import { AppRegistry } from './models';
-
 // Define seeds for populating the mock database
-export function seeds(server: Server<AppRegistry>) {
+export function seeds(server) {
   // Create 10 users
   server.createList('user', 10);
 

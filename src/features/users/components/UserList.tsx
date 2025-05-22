@@ -19,11 +19,11 @@ const UserList: React.FC = () => {
     <div>
       <h1>Users</h1>
       <ul>
-        {users.map((user) => (
+        {Array.isArray(users) ? users.map((user) => (
           <li key={user.id}>
             <Link to={`/users/${user.id}`}>{user.name}</Link> - {user.email} ({user.role})
           </li>
-        ))}
+        )) : <li>No users found</li>}
       </ul>
     </div>
   );

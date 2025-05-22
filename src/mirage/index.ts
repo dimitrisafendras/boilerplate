@@ -1,11 +1,11 @@
-import { createServer, Server } from 'miragejs';
-import { models, AppRegistry } from './models';
+import { createServer } from 'miragejs';
+import { models } from './models';
 import { factories } from './factories';
 import { seeds } from './seeds';
 import { routes } from './routes';
 
 // Function to create and configure the mock server
-export function makeServer({ environment = 'development' } = {}): Server<AppRegistry> {
+export function makeServer({ environment = 'development' } = {}) {
   const server = createServer({
     environment,
 

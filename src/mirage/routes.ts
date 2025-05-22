@@ -1,21 +1,21 @@
-import { Server, Response } from 'miragejs';
-import { AppRegistry } from './models';
+import {Response, type Server} from 'miragejs';
 
 // Define API routes for the mock server
-export function routes(server: Server<AppRegistry>) {
+export function routes(this:Server) {
   // Set API namespace
-  server.namespace = 'api';
+  this.namespace = 'api';
 
   // Define a delay to simulate network latency (optional)
-  server.timing = 1000; // 1 second delay
+  this.timing = 0; // 1 second delay
 
   // GET /api/users - Get all users
-  server.get('/users', (schema) => {
-    return schema.all('user');
+  this.get('/users', (schema) => {
+    const users = schema.all('user');
+    return users.models;
   });
 
   // GET /api/users/:id - Get a specific user by ID
-  server.get('/users/:id', (schema, request) => {
+  this.get('/users/:id', (schema, request) => {
     const id = request.params.id;
     const user = schema.find('user', id);
 
@@ -27,13 +27,13 @@ export function routes(server: Server<AppRegistry>) {
   });
 
   // POST /api/users - Create a new user
-  server.post('/users', (schema, request) => {
+  this.post('/users', (schema, request) => {
     const attrs = JSON.parse(request.requestBody);
     return schema.create('user', attrs);
   });
 
   // PUT /api/users/:id - Update a user
-  server.put('/users/:id', (schema, request) => {
+  this.put('/users/:id', (schema, request) => {
     const id = request.params.id;
     const attrs = JSON.parse(request.requestBody);
     const user = schema.find('user', id);
@@ -46,7 +46,7 @@ export function routes(server: Server<AppRegistry>) {
   });
 
   // DELETE /api/users/:id - Delete a user
-  server.delete('/users/:id', (schema, request) => {
+  this.delete('/users/:id', (schema, request) => {
     const id = request.params.id;
     const user = schema.find('user', id);
 
@@ -59,6 +59,6 @@ export function routes(server: Server<AppRegistry>) {
   });
 
   // Reset namespace for non-API routes
-  server.namespace = '';
-  server.passthrough();
+  this.namespace = '';
+  this.passthrough();
 }

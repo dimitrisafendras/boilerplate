@@ -1,10 +1,9 @@
 import { Factory } from 'miragejs';
 import { faker } from '@faker-js/faker';
-import { User } from '@/common/types/user';
 
 // Define factories for generating mock data
 export const factories = {
-  user: Factory.extend<Partial<User>>({
+  user: Factory.extend({
     id() {
       return faker.string.uuid();
     },
@@ -15,7 +14,7 @@ export const factories = {
       return faker.internet.email();
     },
     role() {
-      return faker.helpers.arrayElement(['admin', 'user']) as 'admin' | 'user';
+      return faker.helpers.arrayElement(['admin', 'user']);
     },
     createdAt() {
       return faker.date.past().toISOString();
