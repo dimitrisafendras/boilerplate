@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers, fetchUserById } from '../slice';
-import { RootState } from '@/app/store';
+import type {RootState} from '@/app/store';
 
 export const useUsers = () => {
   const dispatch = useDispatch();

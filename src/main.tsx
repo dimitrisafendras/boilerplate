@@ -8,22 +8,26 @@ import Router from '@/routes';
 import { store } from '@/app/store';
 
 // Initialize MirageJS in development if VITE_USE_MOCKS is true
+let miragePromise = Promise.resolve();
 if (import.meta.env.DEV && import.meta.env.VITE_USE_MOCKS === 'true') {
-  import('@/mirage').then(({ makeServer }) => {
+  miragePromise = import('@/mirage').then(({ makeServer }) => {
     makeServer({ environment: 'development' });
   });
 }
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <ConfigProvider theme={{
-        token: {
-          colorPrimary: '#646cff',
-        },
-      }}>
-        <Router />
-      </ConfigProvider>
-    </Provider>
-  </StrictMode>,
-)
+// Wait for Mirage to initialize before rendering the app
+miragePromise.then(() => {
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <Provider store={store}>
+        <ConfigProvider theme={{
+          token: {
+            colorPrimary: '#646cff',
+          },
+        }}>
+          <Router />
+        </ConfigProvider>
+      </Provider>
+    </StrictMode>,
+  );
+});
