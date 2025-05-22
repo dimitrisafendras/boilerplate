@@ -88,3 +88,6 @@ Maintain consistent code formatting and organization.
 - Run `pnpm format` and `pnpm lint` before commits.
 - Shared types/interfaces/models must not be duplicated—extract them into `src/common/types/`.
 - Ensure Mirage, Redux slices, and component props all share the same source of truth for types.
+- Every folder should have an index file and everything should be exported from there.
+- Import from directories instead of specific files (e.g., `import { Component } from './components'` instead of `import Component from './components/Component'`).
+- Group related imports together: React imports first, followed by third-party libraries, then local imports.

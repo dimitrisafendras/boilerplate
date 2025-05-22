@@ -1,6 +1,5 @@
 import React from 'react';
-import UserList from './components/UserList';
-import UserDetail from './components/UserDetail';
+import { UserList, UserDetail } from './components';
 
 // Define our own route interface that matches React Router's expectations
 interface AppRouteObject {

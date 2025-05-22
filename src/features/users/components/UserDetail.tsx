@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Card, Typography, Descriptions, Spin, Alert, Button } from 'antd';
 import { UserOutlined, MailOutlined, TeamOutlined, CalendarOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import { useUsers } from '../model/hooks/useUsers';
+import { useUsers } from '../model';
 
 const { Title } = Typography;
 
