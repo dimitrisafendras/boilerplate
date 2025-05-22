@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 
 // Router component that provides the router to the app
 const Router: React.FC = () => {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} future={{ v7_startTransition: true }} />;
 };
 
 export default Router;

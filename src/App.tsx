@@ -1,35 +1,39 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { Layout, Menu, Typography } from 'antd';
 import './App.css';
+
+const { Header, Content, Footer } = Layout;
+const { Title, Text } = Typography;
 
 const App: React.FC = () => {
   return (
-    <div className="app-container">
-      <header>
-        <h1>Feature-Based Architecture Example</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+    <Layout className="app-container">
+      <Header style={{ display: 'flex', alignItems: 'center' }}>
+        <Title level={3} style={{ color: 'white', margin: 0, marginRight: '48px' }}>
+          Feature-Based Architecture Example
+        </Title>
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          items={[
+            { key: 'home', label: <Link to="/">Home</Link> },
+            { key: 'users', label: <Link to="/users">Users</Link> }
+          ]}
+        />
+      </Header>
 
-      <main>
+      <Content style={{ padding: '24px', minHeight: 'calc(100vh - 64px - 70px)' }}>
         {/* This is where the route components will be rendered */}
         <Outlet />
-      </main>
+      </Content>
 
-      <footer>
-        <p>
-          Built with React, Redux Toolkit, Redux-Saga, React Router, and MirageJS
-        </p>
-      </footer>
-    </div>
+      <Footer style={{ textAlign: 'center' }}>
+        <Text>
+          Built with React, Redux Toolkit, Redux-Saga, React Router, MirageJS, and Ant Design
+        </Text>
+      </Footer>
+    </Layout>
   );
 };
 

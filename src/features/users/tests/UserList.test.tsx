@@ -52,7 +52,7 @@ describe('UserList', () => {
     );
 
     // Initially should show loading
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.getByText('Loading users...')).toBeInTheDocument();
 
     // Wait for users to load
     await waitFor(() => {

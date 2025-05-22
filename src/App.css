@@ -1,23 +1,29 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  height: 100vh;
 }
 
+/* Ant Design Layout customizations */
+.app-container .ant-layout {
+  min-height: 100vh;
+}
+
+/* Custom card styling */
+.card {
+  padding: 24px;
+  margin-bottom: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo styling */
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  height: 32px;
+  margin-right: 16px;
 }
 
+/* Animation for logo if needed */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -27,16 +33,14 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Content area styling */
+.site-content {
+  padding: 24px;
+  background: #fff;
 }
 
-.card {
-  padding: 2em;
-}
-
+/* Custom styles for documentation elements */
 .read-the-docs {
-  color: #888;
+  color: rgba(0, 0, 0, 0.45);
+  margin-top: 16px;
 }
