@@ -16,7 +16,9 @@ const router = createBrowserRouter([
       // Add more feature routes here
     ],
   },
-]);
+], {
+  basename: '/boilerplate'
+});
 
 // Router component that provides the router to the app
 const Router: React.FC = () => {
