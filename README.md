@@ -34,6 +34,34 @@ To run tests:
 pnpm test
 ```
 
+## Deployment
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions. The deployment workflow is defined in `.github/workflows/deploy.yml`.
+
+### How it works
+
+1. When you push changes to the `main` branch, the GitHub Actions workflow automatically triggers.
+2. The workflow builds the application and deploys it to GitHub Pages.
+3. The deployed application will be available at `https://<username>.github.io/boilerplate/`.
+
+### Manual deployment
+
+You can also manually trigger the deployment workflow:
+
+1. Go to your GitHub repository.
+2. Navigate to the "Actions" tab.
+3. Select the "Deploy to GitHub Pages" workflow.
+4. Click on "Run workflow" and select the branch you want to deploy.
+
+### Setting up GitHub Pages
+
+Before the first deployment, you need to configure GitHub Pages in your repository:
+
+1. Go to your GitHub repository.
+2. Navigate to "Settings" > "Pages".
+3. Under "Build and deployment", select "GitHub Actions" as the source.
+4. The first workflow run will set up everything else automatically.
+
 ## Project Structure
 
 This project follows a feature-based architecture, where code is organized by feature rather than by type. This makes it easier to understand and maintain the codebase, as all related code is located in the same directory.
