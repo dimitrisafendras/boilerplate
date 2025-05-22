@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { List, Typography, Spin, Alert, Card } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { fetchUsers } from '../slice';
-import type { RootState } from '@/app/store';
+import { useUsers } from '../hooks/useUsers';
 
 const { Title } = Typography;
 
 const UserList: React.FC = () => {
-  const dispatch = useDispatch();
-  const { users, loading, error } = useSelector((state: RootState) => state.users);
+  const { users, loading, error, getUsers } = useUsers();
 
   useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+    getUsers();
+  }, [getUsers]);
 
   if (loading) return (
     <Spin size="large" tip="Loading users...">

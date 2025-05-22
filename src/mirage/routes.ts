@@ -12,7 +12,7 @@ export function routes(this:Server) {
   // GET /api/users - Get all users
   this.get('/users', (schema) => {
     const users = schema.all('user');
-    return users.models;
+    return users.models.map(user => user.attrs);
   });
 
   // GET /api/users/:id - Get a specific user by ID
@@ -24,13 +24,14 @@ export function routes(this:Server) {
       return new Response(404, {}, { error: 'User not found' });
     }
 
-    return user;
+    return user.attrs;
   });
 
   // POST /api/users - Create a new user
   this.post('/users', (schema, request) => {
     const attrs = JSON.parse(request.requestBody);
-    return schema.create('user', attrs);
+    const user = schema.create('user', attrs);
+    return user.attrs;
   });
 
   // PUT /api/users/:id - Update a user

@@ -1,25 +1,26 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { Card, Typography, Descriptions, Spin, Alert, Button } from 'antd';
 import { UserOutlined, MailOutlined, TeamOutlined, CalendarOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import { fetchUserById } from '../slice';
-import type { RootState } from '@/app/store';
+import { useUsers } from '../hooks/useUsers';
 
 const { Title } = Typography;
 
 const UserDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useDispatch();
-  const { selectedUser, loading, error } = useSelector((state: RootState) => state.users);
+  const { selectedUser, loading, error, getUserById } = useUsers();
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchUserById(id));
+      getUserById(id);
     }
-  }, [dispatch, id]);
+  }, [getUserById, id]);
 
-  if (loading) return <Spin size="large" tip="Loading user details..." />;
+  if (loading) return (
+    <Spin size="large" tip="Loading user details...">
+      <div style={{ height: 100, width: '100%' }} />
+    </Spin>
+  );
   if (error) return <Alert message="Error" description={error} type="error" showIcon />;
   if (!selectedUser) return <Alert message="User not found" type="warning" showIcon />;
 
