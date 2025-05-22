@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import userReducer from '@/features/users/slice';
+import userReducer from '@/features/users/model/slice';
 import rootSaga from './rootSaga';
 
 // Create saga middleware

@@ -1,5 +1,5 @@
 import { all, fork } from 'redux-saga/effects';
-import { userSaga } from '@/features/users/saga';
+import { userSaga } from '@/features/users/model/saga';
 
 export default function* rootSaga() {
   yield all([

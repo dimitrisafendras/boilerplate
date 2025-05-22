@@ -11,7 +11,8 @@ Ensure developers can install, develop, and build the project.
 Enforce modular feature-based file structure with shared models and types extracted.
 
 - Each feature must live in `src/features/<feature-name>/`.
-- Each feature should include its own `components/`, `hooks/`, `selectors/`, `routes.tsx`, `slice.ts`, `saga.ts`, and `tests/`.
+- Each feature should include its own `components/`, `routes.tsx`, `model/`, and `tests/`.
+- The `model/` directory should contain `hooks/`, `selectors/`, `slice.ts`, and `saga.ts`.
 - Avoid cross-feature imports directly—extract shared code to `src/common/`.
 - Place reusable types, interfaces, and models in `src/common/types/` or `src/common/models/`.
 - Utilities shared across features should be located in `src/common/utils/` or similar.
@@ -26,11 +27,12 @@ Organize routing via centralized and feature-specific route files.
 ## Redux & Redux-Saga
 Ensure proper Redux Toolkit + Saga integration in a feature scope.
 
-- Use `createSlice` inside each feature's slice file (e.g., `userSlice.ts`).
-- Place side-effects in `saga.ts`, registered in `src/app/rootSaga.ts`.
+- Use `createSlice` inside each feature's model directory in the slice file (e.g., `model/slice.ts`).
+- Place side-effects in `model/saga.ts`, registered in `src/app/rootSaga.ts`.
 - Slices and sagas must be registered in `src/app/store.ts` and `rootSaga.ts` respectively.
-- Create a dedicated `selectors/` directory in each feature folder for Redux selectors.
+- Create a dedicated `selectors/` directory in each feature's model folder for Redux selectors.
 - Every selector should be a stand alone file and the index should just export all of them.
+- Place hooks in the `model/hooks/` directory.
 - Use selectors to access Redux state in components and hooks instead of direct state access.
 
 ## MirageJS Mock Server
