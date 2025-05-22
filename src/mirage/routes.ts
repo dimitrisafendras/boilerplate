@@ -1,12 +1,13 @@
 import {Response, type Server} from 'miragejs';
+import { API_BASE_URL } from '@/common/utils/env';
 
 // Define API routes for the mock server
 export function routes(this:Server) {
-  // Set API namespace
-  this.namespace = 'api';
+  // Set API namespace - remove leading slash if present
+  this.namespace = API_BASE_URL.startsWith('/') ? API_BASE_URL.substring(1) : API_BASE_URL;
 
   // Define a delay to simulate network latency (optional)
-  this.timing = 0; // 1 second delay
+  this.timing = 0; // add delay
 
   // GET /api/users - Get all users
   this.get('/users', (schema) => {

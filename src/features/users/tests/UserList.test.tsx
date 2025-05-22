@@ -1,12 +1,7 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { screen, waitFor } from '@testing-library/react';
 import { createServer, Server } from 'miragejs';
 import UserList from '../components/UserList';
-import { configureStore } from '@reduxjs/toolkit';
-import userReducer from '../slice';
-import createSagaMiddleware from 'redux-saga';
-import { userSaga } from '../saga';
+import { renderWithProviders } from '@/common/utils/test-utils';
 
 describe('UserList', () => {
   let server: Server;
@@ -31,25 +26,8 @@ describe('UserList', () => {
   });
 
   it('renders user list and displays users after loading', async () => {
-    // Set up Redux store with saga middleware
-    const sagaMiddleware = createSagaMiddleware();
-    const store = configureStore({
-      reducer: {
-        users: userReducer,
-      },
-      middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
-    });
-    sagaMiddleware.run(userSaga);
-
-    // Render component with store and router providers
-    render(
-      <Provider store={store}>
-        <RouterProvider
-          router={createBrowserRouter([{ path: '/', element: <UserList /> }])}
-          future={{ v7_startTransition: true }}
-        />
-      </Provider>
-    );
+    // Render component with store and router providers using the utility function
+    renderWithProviders(<UserList />);
 
     // Initially should show loading
     expect(screen.getByText('Loading users...')).toBeTruthy();

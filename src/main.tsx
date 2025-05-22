@@ -6,10 +6,11 @@ import 'antd/dist/reset.css';
 import './index.css';
 import Router from '@/routes';
 import { store } from '@/app/store';
+import { USE_MOCKS } from '@/common/utils/env';
 
-// Initialize MirageJS in development if VITE_USE_MOCKS is true
+// Initialize MirageJS in development if USE_MOCKS is true
 let miragePromise = Promise.resolve();
-if (import.meta.env.DEV && import.meta.env.VITE_USE_MOCKS === 'true') {
+if (import.meta.env.DEV && USE_MOCKS === 'true') {
   miragePromise = import('@/mirage').then(({ makeServer }) => {
     makeServer({ environment: 'development' });
   });
