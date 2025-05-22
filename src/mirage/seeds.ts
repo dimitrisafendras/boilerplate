@@ -1,5 +1,7 @@
 // Define seeds for populating the mock database
-export function seeds(server) {
+import { Server } from 'miragejs';
+
+export function seeds(server: Server) {
   // Create 10 users
   server.createList('user', 10);
 

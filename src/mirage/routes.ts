@@ -34,7 +34,7 @@ export function routes(this:Server) {
   });
 
   // PUT /api/users/:id - Update a user
-  this.put('/users/:id', (schema, request) => {
+  this.put('/users/:id', (schema, request): Response => {
     const id = request.params.id;
     const attrs = JSON.parse(request.requestBody);
     const user = schema.find('user', id);
@@ -43,7 +43,8 @@ export function routes(this:Server) {
       return new Response(404, {}, { error: 'User not found' });
     }
 
-    return user.update(attrs);
+    user.update(attrs);
+    return new Response(200, {}, user.attrs);
   });
 
   // DELETE /api/users/:id - Delete a user
