@@ -297,7 +297,6 @@ const Home: React.FC = () => {
                   style={{
                     marginBottom: '16px',
                     breakInside: 'avoid',
-                    WebkitColumnBreakInside: 'avoid',
                     pageBreakInside: 'avoid'
                   }}
                 >
