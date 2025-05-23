@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: '/boilerplate'
+  basename: '/boilerplate/'
 });
 
 // Router component that provides the router to the app
