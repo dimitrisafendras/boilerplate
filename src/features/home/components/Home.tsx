@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography, Layout, Space, Card, Divider, Tag, Button, Row, Col } from 'antd';
 import { CodeOutlined, ApiOutlined, AppstoreOutlined, EnvironmentOutlined, BugOutlined, FormOutlined } from '@ant-design/icons';
@@ -7,6 +7,24 @@ const { Title, Paragraph, Text } = Typography;
 const { Content } = Layout;
 
 const Home: React.FC = () => {
+  const [columns, setColumns] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setColumns(window.innerWidth >= 992 ? 2 : 1);
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   // Directory structure for the left side
   const directoryStructure = `
 /                            # Project root
@@ -262,7 +280,10 @@ const Home: React.FC = () => {
               </Space>
             </Card>
 
-            <div style={{ columnCount: { xs: 1, sm: 1, md: 1, lg: 2, xl: 2, xxl: 2 }, columnGap: '16px' }}>
+            <div style={{
+              columnCount: columns,
+              columnGap: '16px'
+            }}>
               {guidelineSections.map((item, index) => (
                 <Card
                   key={index}
@@ -273,7 +294,12 @@ const Home: React.FC = () => {
                     </Space>
                   }
                   hoverable
-                  style={{ marginBottom: '16px', breakInside: 'avoid' }}
+                  style={{
+                    marginBottom: '16px',
+                    breakInside: 'avoid',
+                    WebkitColumnBreakInside: 'avoid',
+                    pageBreakInside: 'avoid'
+                  }}
                 >
                   {item.content}
                 </Card>
