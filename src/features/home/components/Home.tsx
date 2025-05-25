@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography, Layout, Space, Card, Divider, Tag, Button, Row, Col } from 'antd';
-import { CodeOutlined, ApiOutlined, AppstoreOutlined, EnvironmentOutlined, BugOutlined, FormOutlined } from '@ant-design/icons';
+import { CodeOutlined, ApiOutlined, AppstoreOutlined, EnvironmentOutlined, BugOutlined, FormOutlined, BellOutlined } from '@ant-design/icons';
+import { useNotifications } from '@/common/features/notification';
 
 const { Title, Paragraph, Text } = Typography;
 const { Content } = Layout;
 
 const Home: React.FC = () => {
   const [columns, setColumns] = useState(1);
+  const { showNotification } = useNotifications();
 
   useEffect(() => {
     const handleResize = () => {
@@ -238,6 +240,7 @@ const Home: React.FC = () => {
             <li>Run <Text code>pnpm format</Text> and <Text code>pnpm lint</Text> before commits</li>
             <li>Shared types/interfaces/models must not be duplicated—extract them into <Text code>src/common/types/</Text></li>
             <li>Ensure Mirage, Redux slices, and component props all share the same source of truth for types</li>
+            <li>When importing types, use the <Text code>import type</Text> syntax: <Text code>import type {'{ RootState }'} from '@/app/store';</Text> instead of <Text code>import {'{ RootState }'} from '@/app/store';</Text></li>
             <li>Every folder should have an index file and everything should be exported from there</li>
             <li>Import from directories instead of specific files (e.g., <Text code>import {'{ Component }'} from './components'</Text> instead of <Text code>import Component from './components/Component'</Text>)</li>
             <li>Group related imports together: React imports first, followed by third-party libraries, then local imports</li>
@@ -278,6 +281,29 @@ const Home: React.FC = () => {
                 </Button>
                 <Tag color="blue">View a list of users and user details</Tag>
               </Space>
+            </Card>
+
+            <Card style={{ marginBottom: '24px' }} title={<Space><BellOutlined />Notification Demo</Space>}>
+              <Space wrap>
+                <Button type="primary" onClick={() => showNotification({ type: 'success', message: 'Success notification', duration: 3000 })}>
+                  Success
+                </Button>
+                <Button type="primary" danger onClick={() => showNotification({ type: 'error', message: 'Error notification', duration: 3000 })}>
+                  Error
+                </Button>
+                <Button onClick={() => showNotification({ type: 'info', message: 'Info notification', duration: 3000 })}>
+                  Info
+                </Button>
+                <Button onClick={() => showNotification({ type: 'warning', message: 'Warning notification', duration: 3000 })}>
+                  Warning
+                </Button>
+                <Button onClick={() => showNotification({ type: 'success', message: 'Persistent notification' })}>
+                  Persistent
+                </Button>
+              </Space>
+              <div style={{ marginTop: '8px' }}>
+                <Tag color="green">Click buttons to trigger notifications</Tag>
+              </div>
             </Card>
 
             <div style={{

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Layout, Button, Space, Typography } from 'antd';
 import './App.css';
+import { NotificationList } from '@/common/features/notification';
 
 const { Header, Content, Footer } = Layout;
 const { Title, Text } = Typography;
@@ -9,6 +10,7 @@ const { Title, Text } = Typography;
 const App: React.FC = () => {
   return (
     <Layout className="app-container">
+      <NotificationList />
       <Header style={{ display: 'flex', alignItems: 'center' }}>
         <Title level={3} style={{ color: 'white', margin: 0, marginRight: '48px' }}>
           Feature-Based Architecture Example

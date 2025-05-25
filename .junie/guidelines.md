@@ -6,6 +6,7 @@ Ensure developers can install, develop, and build the project.
 - Run `pnpm install` to install dependencies.
 - Use `pnpm dev` to start the development server.
 - Use `pnpm build` to build the production bundle.
+- Use `pnpm test` to test the application.
 
 ## Feature-Based Architecture
 Enforce modular feature-based file structure with shared models and types extracted.
@@ -88,6 +89,7 @@ Maintain consistent code formatting and organization.
 - Run `pnpm format` and `pnpm lint` before commits.
 - Shared types/interfaces/models must not be duplicated—extract them into `src/common/types/`.
 - Ensure Mirage, Redux slices, and component props all share the same source of truth for types.
+- When importing types, use the `import type` syntax: `import type { RootState } from '@/app/store';` instead of `import { RootState } from '@/app/store';`.
 - Every folder should have an index file and everything should be exported from there.
 - Import from directories instead of specific files (e.g., `import { Component } from './components'` instead of `import Component from './components/Component'`).
 - Group related imports together: React imports first, followed by third-party libraries, then local imports.

@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { renderWithProviders } from '@/common/utils/test-utils';
 import Home from '../components/Home';
 
 // Mock the Link component from react-router-dom
@@ -13,11 +14,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('Home Component', () => {
   it('renders the home page with all sections', () => {
-    render(
-      <BrowserRouter>
-        <Home />
-      </BrowserRouter>
-    );
+    renderWithProviders(<Home />);
 
     // Check if the title is rendered
     expect(screen.getByText('Project Guidelines')).toBeInTheDocument();

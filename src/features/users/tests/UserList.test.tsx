@@ -1,3 +1,4 @@
+import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import { createServer, Server } from 'miragejs';
 import UserList from '../components/UserList';
