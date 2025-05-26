@@ -69,9 +69,14 @@ jobs:
 
       - name: Restore node_modules
         uses: actions/cache@v4
+        id: cache-node-modules
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install dependencies if cache miss
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: pnpm install
 
       - name: Lint
         run: pnpm lint
@@ -97,9 +102,14 @@ jobs:
 
       - name: Restore node_modules
         uses: actions/cache@v4
+        id: cache-node-modules
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install dependencies if cache miss
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: pnpm install
 
       - name: TypeScript Check
         run: pnpm exec tsc --noEmit
@@ -125,9 +135,14 @@ jobs:
 
       - name: Restore node_modules
         uses: actions/cache@v4
+        id: cache-node-modules
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install dependencies if cache miss
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: pnpm install
 
       - name: Build
         run: pnpm build
@@ -160,9 +175,14 @@ jobs:
 
       - name: Restore node_modules
         uses: actions/cache@v4
+        id: cache-node-modules
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install dependencies if cache miss
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: pnpm install
 
       - name: Run tests with coverage
         run: pnpm test -- --coverage
