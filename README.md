@@ -34,6 +34,17 @@ To run tests:
 pnpm test
 ```
 
+## Pre-commit Hooks
+
+This project uses [husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/okonet/lint-staged) to run ESLint and tests on staged files before each commit. This helps ensure that only code that passes linting and tests is committed to the repository.
+
+When you commit changes, the following checks are automatically run:
+
+1. ESLint will check and fix (when possible) any linting issues in staged TypeScript/TSX files.
+2. Jest will run tests related to the staged files.
+
+If any of these checks fail, the commit will be aborted, allowing you to fix the issues before committing again.
+
 ## Deployment
 
 This project is configured for automatic deployment to GitHub Pages using GitHub Actions. The deployment workflow is defined in `.github/workflows/deploy.yml`.

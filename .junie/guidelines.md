@@ -93,3 +93,4 @@ Maintain consistent code formatting and organization.
 - Every folder should have an index file and everything should be exported from there.
 - Import from directories instead of specific files (e.g., `import { Component } from './components'` instead of `import Component from './components/Component'`).
 - Group related imports together: React imports first, followed by third-party libraries, then local imports.
+- Always use named exports with `export const` instead of `export default` for better tree-shaking, easier refactoring, and consistent import style. Exception: React components can use default exports when they are the only export from a file.
