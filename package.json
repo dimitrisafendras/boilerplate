@@ -4,18 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "test": "jest",
-    "preview": "vite preview",
+    "dev": "pnpm exec vite",
+    "build": "pnpm exec tsc -b && pnpm exec vite build",
+    "lint": "pnpm exec eslint .",
+    "format": "pnpm exec prettier --write \"src/**/*.{ts,tsx}\"",
+    "test": "pnpm exec jest",
+    "preview": "pnpm exec vite preview",
     "prepare": "husky",
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix",
+      "pnpm exec eslint --fix",
       "pnpm test --findRelatedTests"
     ]
   },
