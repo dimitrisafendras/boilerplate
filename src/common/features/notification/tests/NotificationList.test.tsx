@@ -1,4 +1,4 @@
-import { screen, waitFor } from '@testing-library/react';
+import { screen, waitFor, act } from '@testing-library/react';
 import { NotificationList } from '../components';
 import { renderWithProviders } from '@/common/utils/test-utils';
 import { addNotification } from '../model';
@@ -13,11 +13,13 @@ describe('NotificationList', () => {
     const { store } = renderWithProviders(<NotificationList />);
 
     // Add a notification
-    store.dispatch(addNotification({
-      type: 'success',
-      message: 'Test notification',
-      duration: 3000
-    }));
+    act(() => {
+      store.dispatch(addNotification({
+        type: 'success',
+        message: 'Test notification',
+        duration: 3000
+      }));
+    });
 
     // Check if the notification is displayed
     await waitFor(() => {
@@ -29,17 +31,21 @@ describe('NotificationList', () => {
     const { store } = renderWithProviders(<NotificationList />);
 
     // Add multiple notifications
-    store.dispatch(addNotification({
-      type: 'success',
-      message: 'Success notification',
-      duration: 3000
-    }));
+    act(() => {
+      store.dispatch(addNotification({
+        type: 'success',
+        message: 'Success notification',
+        duration: 3000
+      }));
+    });
 
-    store.dispatch(addNotification({
-      type: 'error',
-      message: 'Error notification',
-      duration: 3000
-    }));
+    act(() => {
+      store.dispatch(addNotification({
+        type: 'error',
+        message: 'Error notification',
+        duration: 3000
+      }));
+    });
 
     // Check if both notifications are displayed
     await waitFor(() => {
