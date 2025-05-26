@@ -7,7 +7,7 @@ import { NotificationList } from '@/common/features/notification';
 const { Header, Content, Footer } = Layout;
 const { Title, Text } = Typography;
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   return (
     <Layout className="app-container">
       <NotificationList />
@@ -39,4 +39,3 @@ const App: React.FC = () => {
   );
 };
 
-export default App;

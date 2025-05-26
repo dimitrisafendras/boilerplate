@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import userReducer from '@/features/users/model';
-import notificationReducer from '@/common/features/notification/model';
-import rootSaga from './rootSaga';
+import { userReducer } from '@/features/users/model';
+import { notificationReducer } from '@/common/features/notification/model';
+import { rootSaga } from './rootSaga';
 
 // Create saga middleware
 const sagaMiddleware = createSagaMiddleware();

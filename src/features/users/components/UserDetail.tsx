@@ -6,7 +6,7 @@ import { useUsers } from '../model';
 
 const { Title } = Typography;
 
-const UserDetail: React.FC = () => {
+export const UserDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { selectedUser, loading, error, getUserById } = useUsers();
 
@@ -51,4 +51,3 @@ const UserDetail: React.FC = () => {
   );
 };
 
-export default UserDetail;

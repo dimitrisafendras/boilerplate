@@ -7,7 +7,7 @@ import { useNotifications } from '@/common/features/notification';
 const { Title, Paragraph, Text } = Typography;
 const { Content } = Layout;
 
-const Home: React.FC = () => {
+export const Home: React.FC = () => {
   const [columns, setColumns] = useState(1);
   const { showNotification } = useNotifications();
 
@@ -337,4 +337,3 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;

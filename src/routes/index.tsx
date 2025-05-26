@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { userRoutes } from '@/features/users/routes';
 import { homeRoutes } from '@/features/home/routes';
-import App from '@/App';
+import { App } from '@/App';
 
 // Create a browser router with all routes
 const router = createBrowserRouter([
@@ -21,8 +21,7 @@ const router = createBrowserRouter([
 });
 
 // Router component that provides the router to the app
-const Router: React.FC = () => {
+export const Router: React.FC = () => {
   return <RouterProvider router={router} future={{ v7_startTransition: true }} />;
 };
 
-export default Router;

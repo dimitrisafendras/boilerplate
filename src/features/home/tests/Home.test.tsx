@@ -2,7 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { renderWithProviders } from '@/common/utils/test-utils';
-import Home from '../components/Home';
+import { Home } from '../components/Home';
 
 // Mock the Link component from react-router-dom
 jest.mock('react-router-dom', () => ({

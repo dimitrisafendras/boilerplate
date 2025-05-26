@@ -43,4 +43,4 @@ export const {
   clearNotifications,
 } = notificationSlice.actions;
 
-export default notificationSlice.reducer;
+export const notificationReducer = notificationSlice.reducer;

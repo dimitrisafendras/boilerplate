@@ -3,5 +3,5 @@ export * from './selectors';
 export * from './slice';
 export * from './saga';
 
-import reducer from './slice';
-export default reducer;
+import { userReducer } from './slice';
+export { userReducer };

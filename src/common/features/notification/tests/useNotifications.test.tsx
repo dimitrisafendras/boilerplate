@@ -2,7 +2,7 @@ import { renderHook, act } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { useNotifications } from '../model';
-import notificationReducer from '../model';
+import { notificationReducer } from '../model';
 
 describe('useNotifications', () => {
   // Create a test store with only the notification reducer

@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import { createServer, Server, Response } from 'miragejs';
-import UserList from '../components/UserList';
+import { UserList } from '../components/UserList';
 import { renderWithProviders } from '@/common/utils/test-utils';
 import { NotificationList } from '@/common/features/notification';
 

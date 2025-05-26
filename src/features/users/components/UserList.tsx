@@ -6,7 +6,7 @@ import { useUsers } from '../model';
 
 const { Title } = Typography;
 
-const UserList: React.FC = () => {
+export const UserList: React.FC = () => {
   const { users, loading, error, getUsers } = useUsers();
 
   useEffect(() => {
@@ -41,4 +41,3 @@ const UserList: React.FC = () => {
   );
 };
 
-export default UserList;

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ConfigProvider } from 'antd';
 import 'antd/dist/reset.css';
 import './index.css';
-import Router from '@/routes';
+import { Router } from '@/routes';
 import { store } from '@/app/store';
 import { USE_MOCKS } from '@/common/utils/env';
 
