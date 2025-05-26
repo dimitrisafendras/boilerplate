@@ -49,6 +49,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Run TypeScript checks
+        run: pnpm exec tsc --noEmit
+
+      - name: Run linting
+        run: pnpm lint
+
+      - name: Run tests
+        run: pnpm test
+
       - name: Build
         run: pnpm build
 
