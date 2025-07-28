@@ -34,18 +34,13 @@ export const Home: React.FC = () => {
       setColumns(window.innerWidth >= 992 ? 2 : 1);
     };
 
-    // Set initial value
     handleResize();
-
-    // Add event listener
     window.addEventListener("resize", handleResize);
 
-    // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  // Directory structure for the left side
   const directoryStructure = `
 /                            # Project root
 ├── .env                     # Environment variables
