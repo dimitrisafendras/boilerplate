@@ -42,7 +42,10 @@ export function renderWithProviders(
       path: routerOptions.path || '/',
       element: ui
     }
-  ]);
+  ], {
+    // Use empty basename for tests to avoid routing issues
+    basename: ''
+  });
 
   // Render the component with providers
   return {

@@ -12,7 +12,7 @@ export default defineConfig({
       typescript: true,
     }),
   ],
-  base: '/boilerplate/',
+  base: '/boilerplate',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')

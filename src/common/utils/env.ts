@@ -39,3 +39,4 @@ const getEnv = (key: string, defaultValue: string): string => {
 // Common environment variables with default values
 export const API_BASE_URL = getEnv('VITE_API_BASE_URL', '/api');
 export const USE_MOCKS = getEnv('VITE_USE_MOCKS', 'true');
+export const ROUTER_BASENAME = getEnv('VITE_ROUTER_BASENAME', '/boilerplate');

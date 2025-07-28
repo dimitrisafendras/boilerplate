@@ -1,0 +1,15 @@
+/* NotificationList component styles */
+
+/* Container styles */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 400px;
+}
+
+/* Space component styles */
+.notification-space {
+  width: 100%;
+}
