@@ -9,6 +9,7 @@ import './index.css';
 import { Router } from '@/routes';
 import { store } from '@/app/store';
 import { USE_MOCKS } from '@/common/utils/env';
+import { theme } from '@/common/theme';
 
 // Initialize MirageJS in development if USE_MOCKS is true
 let miragePromise = Promise.resolve();
@@ -24,11 +25,7 @@ miragePromise.then(() => {
     <StrictMode>
       <Provider store={store}>
         <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: '#646cff',
-            },
-          }}
+          theme={theme}
         >
           <Router />
         </ConfigProvider>
