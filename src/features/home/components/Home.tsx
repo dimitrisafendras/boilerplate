@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography, Layout, Space, Card, Divider, Tag, Button, Row, Col } from 'antd';
 import { CodeOutlined, ApiOutlined, AppstoreOutlined, EnvironmentOutlined, BugOutlined, FormOutlined, BellOutlined } from '@ant-design/icons';
-import { useNotifications } from '@/common/features/notification';
+import { useNotifications } from '@/models/notification';
 
 const { Title, Paragraph, Text } = Typography;
 const { Content } = Layout;
@@ -71,14 +71,23 @@ export const Home: React.FC = () => {
     ├── features/            # Feature modules
     │   ├── users/           # Users feature
     │   │   ├── components/  # React components
-    │   │   ├── hooks/       # Custom hooks
     │   │   ├── tests/       # Tests
-    │   │   ├── routes.tsx   # Feature routes
-    │   │   ├── slice.ts     # Redux slice
-    │   │   └── saga.ts      # Redux-Saga
+    │   │   └── routes.tsx   # Feature routes
     │   └── home/            # Home feature
     │       ├── components/  # React components
     │       └── routes.tsx   # Feature routes
+    │
+    ├── models/              # Centralized models
+    │   ├── users/           # Users model
+    │   │   ├── hooks/       # Custom hooks
+    │   │   ├── selectors/   # Redux selectors
+    │   │   ├── slice.ts     # Redux slice
+    │   │   └── saga.ts      # Redux-Saga
+    │   └── notification/    # Notification model
+    │       ├── hooks/       # Custom hooks
+    │       ├── selectors/   # Redux selectors
+    │       ├── slice.ts     # Redux slice
+    │       └── saga.ts      # Redux-Saga
     │
     ├── mirage/              # Mock API server
     │   ├── index.ts         # Mirage setup
@@ -114,8 +123,8 @@ export const Home: React.FC = () => {
           <Paragraph>Enforce modular feature-based file structure with shared models and types extracted.</Paragraph>
           <ul>
             <li>Each feature must live in <Text code>src/features/&lt;feature-name&gt;/</Text></li>
-            <li>Each feature should include its own <Text code>components/</Text>, <Text code>routes.tsx</Text>, <Text code>model/</Text>, and <Text code>tests/</Text></li>
-            <li>The <Text code>model/</Text> directory should contain <Text code>hooks/</Text>, <Text code>selectors/</Text>, <Text code>slice.ts</Text>, and <Text code>saga.ts</Text></li>
+            <li>Each feature should include its own <Text code>components/</Text>, <Text code>routes.tsx</Text>, and <Text code>tests/</Text></li>
+            <li>Models are centralized in <Text code>src/models/&lt;model-name&gt;/</Text> with a one-to-many relationship to features</li>
             <li>Avoid cross-feature imports directly—extract shared code to <Text code>src/common/</Text></li>
             <li>Place reusable types, interfaces, and models in <Text code>src/common/types/</Text> or <Text code>src/common/models/</Text></li>
             <li>Utilities shared across features should be located in <Text code>src/common/utils/</Text> or similar</li>
@@ -142,15 +151,16 @@ export const Home: React.FC = () => {
       icon: <ApiOutlined />,
       content: (
         <>
-          <Paragraph>Ensure proper Redux Toolkit + Saga integration in a feature scope.</Paragraph>
+          <Paragraph>Ensure proper Redux Toolkit + Saga integration with centralized models.</Paragraph>
           <ul>
-            <li>Use <Text code>createSlice</Text> inside each feature's model directory in the slice file (e.g., <Text code>model/slice.ts</Text>)</li>
-            <li>Place side-effects in <Text code>model/saga.ts</Text>, registered in <Text code>src/app/rootSaga.ts</Text></li>
+            <li>Use <Text code>createSlice</Text> inside each model's directory in the slice file (e.g., <Text code>src/models/&lt;model-name&gt;/slice.ts</Text>)</li>
+            <li>Place side-effects in <Text code>src/models/&lt;model-name&gt;/saga.ts</Text>, registered in <Text code>src/app/rootSaga.ts</Text></li>
             <li>Slices and sagas must be registered in <Text code>src/app/store.ts</Text> and <Text code>rootSaga.ts</Text> respectively</li>
-            <li>Create a dedicated <Text code>selectors/</Text> directory in each feature's model folder for Redux selectors</li>
-            <li>Every selector should be a stand alone file and the index should just export all of them</li>
-            <li>Place hooks in the <Text code>model/hooks/</Text> directory</li>
+            <li>Create a dedicated <Text code>selectors/</Text> directory in each model folder for Redux selectors</li>
+            <li>Every selector should be a standalone file and the index should just export all of them</li>
+            <li>Place hooks in the <Text code>src/models/&lt;model-name&gt;/hooks/</Text> directory</li>
             <li>Use selectors to access Redux state in components and hooks instead of direct state access</li>
+            <li>Import models in components using <Text code>import {'{ useModelName }'} from '@/models/model-name'</Text></li>
           </ul>
         </>
       ),

@@ -1,7 +1,7 @@
 import { screen, waitFor, act } from '@testing-library/react';
 import { NotificationList } from '../components';
 import { renderWithProviders } from '@/common/utils/test-utils';
-import { addNotification } from '../model';
+import { addNotification } from '@/models/notification';
 
 describe('NotificationList', () => {
   it('renders nothing when there are no notifications', () => {

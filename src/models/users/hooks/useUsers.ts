@@ -1,5 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
+// React and React-related imports
 import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+// Local imports
 import { fetchUsers, fetchUserById } from '../slice';
 import { selectUsers, selectSelectedUser, selectLoading, selectError } from '../selectors';
 

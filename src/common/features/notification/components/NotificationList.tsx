@@ -1,6 +1,11 @@
+// React and React-related imports
 import React from 'react';
+
+// Third-party library imports
 import { Alert, Space } from 'antd';
-import { useNotifications } from '../model';
+
+// Local imports
+import { useNotifications } from '@/models/notification';
 
 export const NotificationList: React.FC = () => {
   const { notifications, hideNotification } = useNotifications();

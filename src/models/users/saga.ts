@@ -10,7 +10,7 @@ import {
 } from './slice';
 import type { User } from '@/common/types/user';
 import { API_BASE_URL } from '@/common/utils/env';
-import { addNotification } from '@/common/features/notification/model';
+import { addNotification } from '@/models/notification';
 
 // API calls would normally be in a separate file, but for simplicity, we'll define them here
 const fetchUsersApi = async (): Promise<User[]> => {

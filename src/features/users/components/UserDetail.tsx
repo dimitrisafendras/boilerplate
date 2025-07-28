@@ -1,8 +1,13 @@
+// React and React-related imports
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+
+// Third-party library imports
 import { Card, Typography, Descriptions, Spin, Alert, Button } from 'antd';
 import { UserOutlined, MailOutlined, TeamOutlined, CalendarOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import { useUsers } from '../model';
+
+// Local imports
+import { useUsers } from '@/models/users';
 
 const { Title } = Typography;
 

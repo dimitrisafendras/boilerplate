@@ -1,6 +1,6 @@
 import { all, fork } from 'redux-saga/effects';
-import { userSaga } from '@/features/users/model';
-import { notificationSaga } from '@/common/features/notification/model';
+import { userSaga } from '@/models/users';
+import { notificationSaga } from '@/models/notification';
 
 export function* rootSaga() {
   yield all([

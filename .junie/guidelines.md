@@ -12,8 +12,8 @@ Ensure developers can install, develop, and build the project.
 Enforce modular feature-based file structure with shared models and types extracted.
 
 - Each feature must live in `src/features/<feature-name>/`.
-- Each feature should include its own `components/`, `routes.tsx`, `model/`, and `tests/`.
-- The `model/` directory should contain `hooks/`, `selectors/`, `slice.ts`, and `saga.ts`.
+- Each feature should include its own `components/`, `routes.tsx`, and `tests/`.
+- Models are centralized in `src/models/<model-name>/` with a one-to-many relationship to features.
 - Avoid cross-feature imports directly—extract shared code to `src/common/`.
 - Place reusable types, interfaces, and models in `src/common/types/` or `src/common/models/`.
 - Utilities shared across features should be located in `src/common/utils/` or similar.
@@ -26,15 +26,16 @@ Organize routing via centralized and feature-specific route files.
 - Use React Router v6+ with JSX route definitions.
 
 ## Redux & Redux-Saga
-Ensure proper Redux Toolkit + Saga integration in a feature scope.
+Ensure proper Redux Toolkit + Saga integration with centralized models.
 
-- Use `createSlice` inside each feature's model directory in the slice file (e.g., `model/slice.ts`).
-- Place side-effects in `model/saga.ts`, registered in `src/app/rootSaga.ts`.
+- Use `createSlice` inside each model's directory in the slice file (e.g., `src/models/<model-name>/slice.ts`).
+- Place side-effects in `src/models/<model-name>/saga.ts`, registered in `src/app/rootSaga.ts`.
 - Slices and sagas must be registered in `src/app/store.ts` and `rootSaga.ts` respectively.
-- Create a dedicated `selectors/` directory in each feature's model folder for Redux selectors.
-- Every selector should be a stand alone file and the index should just export all of them.
-- Place hooks in the `model/hooks/` directory.
+- Create a dedicated `selectors/` directory in each model folder for Redux selectors.
+- Every selector should be a standalone file and the index should just export all of them.
+- Place hooks in the `src/models/<model-name>/hooks/` directory.
 - Use selectors to access Redux state in components and hooks instead of direct state access.
+- Import models in components using `import { useModelName } from '@/models/model-name'`.
 
 ## MirageJS Mock Server
 Follow official MirageJS structure for robust and type-consistent mocks.
@@ -92,5 +93,25 @@ Maintain consistent code formatting and organization.
 - When importing types, use the `import type` syntax: `import type { RootState } from '@/app/store';` instead of `import { RootState } from '@/app/store';`.
 - Every folder should have an index file and everything should be exported from there.
 - Import from directories instead of specific files (e.g., `import { Component } from './components'` instead of `import Component from './components/Component'`).
-- Group related imports together: React imports first, followed by third-party libraries, then local imports.
+- Group related imports together with clear separation and comments:
+  ```typescript
+  // React and React-related imports
+  import React, { useState, useEffect } from 'react';
+  import { useParams, Link } from 'react-router-dom';
+  
+  // Third-party library imports
+  import { Button, Card, Form } from 'antd';
+  import { UserOutlined } from '@ant-design/icons';
+  
+  // Local imports
+  import { useUsers } from '@/models/users';
+  import { formatDate } from '@/common/utils/date';
+  ```
+- Follow this specific ordering for imports:
+  1. React core imports first
+  2. React-related libraries (React Router, React Redux, etc.)
+  3. Third-party libraries (alphabetically ordered when possible)
+  4. Local imports (from most general to most specific)
+- Separate each import group with a blank line and a comment header
+- When importing types, use the `import type` syntax and group with their respective categories
 - Always use named exports with `export const` instead of `export default` for better tree-shaking, easier refactoring, and consistent import style. Exception: React components can use default exports when they are the only export from a file.
