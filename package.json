@@ -11,12 +11,16 @@
     "test": "pnpm exec jest --passWithNoTests",
     "preview": "pnpm exec vite preview",
     "prepare": "husky",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "type-check": "pnpm exec tsc --noEmit"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
+      "pnpm exec prettier --write",
       "pnpm exec eslint --fix",
-      "pnpm test --findRelatedTests --passWithNoTests"
+      "pnpm exec eslint",
+      "pnpm exec tsc --noEmit",
+      "pnpm test --findRelatedTests"
     ]
   },
   "dependencies": {
