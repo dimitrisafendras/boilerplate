@@ -12,14 +12,15 @@
     "preview": "pnpm exec vite preview",
     "prepare": "husky",
     "pre-commit": "lint-staged",
-    "type-check": "pnpm exec tsc --noEmit"
+    "type-check": "pnpm exec tsc --noEmit",
+    "type-check:lint": "pnpm exec tsc --noEmit --skipLibCheck -p tsconfig.lint.json"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
       "pnpm exec prettier --write",
       "pnpm exec eslint --fix",
       "pnpm exec eslint",
-      "pnpm exec tsc --noEmit",
+      "./scripts/type-check-lint.sh",
       "pnpm test --findRelatedTests"
     ]
   },

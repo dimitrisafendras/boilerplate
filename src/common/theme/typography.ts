@@ -1,13 +1,14 @@
 // src/common/theme/typography.ts
-import type { ThemeConfig } from 'antd';
+import type { ThemeConfig } from "antd";
 
 /**
  * Typography-related theme settings
  * These settings define the text styles used throughout the application
  */
-export const typography: Partial<ThemeConfig['token']> = {
+export const typography: Partial<ThemeConfig["token"]> = {
   // Font family
-  fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  fontFamily:
+    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
 
   // Font sizes
   fontSize: 14,
@@ -27,6 +28,4 @@ export const typography: Partial<ThemeConfig['token']> = {
 
   // Font weights
   fontWeightStrong: 600,
-  fontWeightNormal: 400,
-  fontWeightLight: 300,
 };
