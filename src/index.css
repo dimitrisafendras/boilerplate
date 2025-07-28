@@ -47,3 +47,70 @@ button:not(.ant-btn):focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Theme-based utility classes */
+
+/* Margin utilities */
+.mt-sm {
+  margin-top: 8px; /* Space.marginXS from theme */
+}
+
+.mt-md {
+  margin-top: 16px; /* Space.marginSM from theme */
+}
+
+.mt-lg {
+  margin-top: 24px; /* Space.marginMD from theme */
+}
+
+.mb-sm {
+  margin-bottom: 8px;
+}
+
+.mb-md {
+  margin-bottom: 16px; /* Card.marginXXS from theme */
+}
+
+.mb-lg {
+  margin-bottom: 24px; /* Card.marginSM from theme */
+}
+
+/* Layout utilities */
+.site-content {
+  padding: 24px; /* Hardcoded value (previously referenced Layout.contentPadding) */
+  max-width: 1200px; /* Hardcoded value (previously referenced Layout.contentMaxWidth) */
+  margin: 0 auto;
+}
+
+/* Component-specific styles */
+.spinner-container {
+  height: 100px;
+  width: 100%;
+}
+
+.code-block {
+  background-color: #f5f5f5; /* Typography.colorBgTextHover from theme */
+  padding: 16px; /* Typography.paddingLG from theme */
+  border-radius: 4px; /* Typography.borderRadiusSM from theme */
+  font-size: 12px; /* Typography.fontSizeSM from theme */
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.masonry-layout {
+  /* columnCount and columnGap are set inline because they're dynamic */
+}
+
+.masonry-card {
+  margin-bottom: 16px; /* Card.marginXXS from theme */
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.avatar-icon {
+  font-size: 24px; /* Hardcoded value (previously referenced List.avatarSize) */
+}
+
+.button-link {
+  color: inherit;
+}
