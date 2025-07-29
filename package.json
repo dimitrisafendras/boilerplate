@@ -20,7 +20,7 @@
       "prettier --write",
       "eslint --fix",
       "eslint",
-      ".\\scripts\\type-check-lint.bat",
+      "npm run type-check:lint",
       "npm test -- --findRelatedTests"
     ]
   },
