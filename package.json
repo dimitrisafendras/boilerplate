@@ -4,24 +4,24 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "pnpm exec vite",
-    "build": "pnpm exec tsc -b && pnpm exec vite build",
-    "lint": "pnpm exec eslint .",
-    "format": "pnpm exec prettier --write \"src/**/*.{ts,tsx}\"",
-    "test": "pnpm exec jest --passWithNoTests",
-    "preview": "pnpm exec vite preview",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "test": "jest --passWithNoTests",
+    "preview": "vite preview",
     "prepare": "husky",
     "pre-commit": "lint-staged",
-    "type-check": "pnpm exec tsc --noEmit",
-    "type-check:lint": "pnpm exec tsc --noEmit --skipLibCheck -p tsconfig.lint.json"
+    "type-check": "tsc --noEmit",
+    "type-check:lint": "tsc --noEmit --skipLibCheck -p tsconfig.lint.json"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "pnpm exec prettier --write",
-      "pnpm exec eslint --fix",
-      "pnpm exec eslint",
-      "./scripts/type-check-lint.sh",
-      "pnpm test --findRelatedTests"
+      "prettier --write",
+      "eslint --fix",
+      "eslint",
+      ".\\scripts\\type-check-lint.bat",
+      "npm test -- --findRelatedTests"
     ]
   },
   "dependencies": {
@@ -40,7 +40,7 @@
     "@eslint/js": "^9.25.0",
     "@faker-js/faker": "^8.4.1",
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^15.0.0",
+    "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
     "@types/react": "^19.1.2",

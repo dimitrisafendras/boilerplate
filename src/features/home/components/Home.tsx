@@ -50,7 +50,7 @@ export const Home: React.FC = () => {
 ├── index.html               # HTML entry point
 ├── jest.config.js           # Jest configuration
 ├── package.json             # Package configuration
-├── pnpm-lock.yaml           # PNPM lock file
+├── package-lock.json        # NPM lock file
 ├── README.md                # Project documentation
 ├── tsconfig.json            # TypeScript configuration
 ├── tsconfig.app.json        # App-specific TypeScript configuration
@@ -124,13 +124,13 @@ export const Home: React.FC = () => {
           </Paragraph>
           <ul>
             <li>
-              <Text code>pnpm install</Text> - Install dependencies
+              <Text code>npm install</Text> - Install dependencies
             </li>
             <li>
-              <Text code>pnpm dev</Text> - Start the development server
+              <Text code>npm run dev</Text> - Start the development server
             </li>
             <li>
-              <Text code>pnpm build</Text> - Build the production bundle
+              <Text code>npm run build</Text> - Build the production bundle
             </li>
           </ul>
         </>
@@ -361,7 +361,7 @@ export const Home: React.FC = () => {
               Mock backend behavior in tests via Mirage (with proper seeding)
             </li>
             <li>
-              Run tests with <Text code>pnpm test</Text>. Use{" "}
+              Run tests with <Text code>npm test</Text>. Use{" "}
               <Text code>-- &lt;path&gt;</Text> to target specific files
             </li>
             <li>
@@ -437,8 +437,8 @@ export const Home: React.FC = () => {
               <Text code>src/</Text>
             </li>
             <li>
-              Run <Text code>pnpm format</Text> and <Text code>pnpm lint</Text>{" "}
-              before commits
+              Run <Text code>npm run format</Text> and{" "}
+              <Text code>npm run lint</Text> before commits
             </li>
             <li>
               Shared types/interfaces/models must not be duplicated—extract them

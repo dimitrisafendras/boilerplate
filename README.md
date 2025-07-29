@@ -4,34 +4,30 @@ This project demonstrates a modular, feature-based architecture for React applic
 
 ## Getting Started
 
-This project uses [pnpm](https://pnpm.io/) as the package manager. If you don't have pnpm installed, you can install it with:
-
-```bash
-npm install -g pnpm
-```
+This project uses [npm](https://www.npmjs.com/) as the package manager.
 
 To install dependencies:
 
 ```bash
-pnpm install
+npm install
 ```
 
 To start the development server:
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 To build the project:
 
 ```bash
-pnpm build
+npm run build
 ```
 
 To run tests:
 
 ```bash
-pnpm test
+npm test
 ```
 
 ## Pre-commit Hooks

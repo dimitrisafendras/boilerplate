@@ -3,10 +3,10 @@
 ## Build Setup
 Ensure developers can install, develop, and build the project.
 
-- Run `pnpm install` to install dependencies.
-- Use `pnpm dev` to start the development server.
-- Use `pnpm build` to build the production bundle.
-- Use `pnpm test` to test the application.
+- Run `npm install` to install dependencies.
+- Use `npm run dev` to start the development server.
+- Use `npm run build` to build the production bundle.
+- Use `npm test` to test the application.
 
 ## Feature-Based Architecture
 Enforce modular feature-based file structure with shared models and types extracted.
@@ -68,7 +68,7 @@ Follow standardized testing practices with React Testing Library + Jest.
 - Use React Testing Library and Mirage for integration-style tests.
 - Each feature must have a `tests/` folder.
 - Mock backend behavior in tests via Mirage (with proper seeding).
-- Run tests with `pnpm test`. Use `-- <path>` to target specific files.
+- Run tests with `npm test`. Use `-- <path>` to target specific files.
 - Use `screen`, `waitFor`, and `userEvent` for clean test interaction logic.
 
 ## UI Components & Ant Design
@@ -87,7 +87,7 @@ Use Ant Design as the primary UI component library for consistent user experienc
 Maintain consistent code formatting and organization.
 
 - Use the `@/` alias for absolute imports from `src/`.
-- Run `pnpm format` and `pnpm lint` before commits.
+- Run `npm run format` and `npm run lint` before commits.
 - Shared types/interfaces/models must not be duplicated—extract them into `src/common/types/`.
 - Ensure Mirage, Redux slices, and component props all share the same source of truth for types.
 - When importing types, use the `import type` syntax: `import type { RootState } from '@/app/store';` instead of `import { RootState } from '@/app/store';`.
