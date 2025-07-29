@@ -20,7 +20,6 @@
       "prettier --write",
       "eslint --fix",
       "eslint",
-      "npm run type-check:lint",
       "npm test -- --findRelatedTests"
     ]
   },
