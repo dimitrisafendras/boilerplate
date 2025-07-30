@@ -29,7 +29,11 @@ Organize routing via centralized and feature-specific route files.
 Ensure proper Redux Toolkit + Saga integration with centralized models.
 
 - Use `createSlice` inside each model's directory in the slice file (e.g., `src/models/<model-name>/slice.ts`).
-- Place side-effects in `src/models/<model-name>/saga.ts`, registered in `src/app/rootSaga.ts`.
+- Organize sagas in a dedicated `sagas/` directory within each model (e.g., `src/models/<model-name>/sagas/`).
+- Break up sagas into separate files by functionality (e.g., `fetchUsers.ts`, `fetchUserById.ts`).
+- Each saga file should export its saga function and watcher function.
+- Create an index.ts file in the sagas directory to combine and export all sagas.
+- Register the main saga in `src/app/rootSaga.ts`.
 - Slices and sagas must be registered in `src/app/store.ts` and `rootSaga.ts` respectively.
 - Create a dedicated `selectors/` directory in each model folder for Redux selectors.
 - Every selector should be a standalone file and the index should just export all of them.
@@ -51,6 +55,17 @@ Follow official MirageJS structure for robust and type-consistent mocks.
 - Initialize Mirage in `main.tsx` only if the env variable `VITE_USE_MOCKS=true`.
 - Use `environment: 'test'` in test suites.
 - Ensure no mock server is booted in production builds.
+
+## API Organization
+Organize API calls in a centralized top-level directory structure.
+
+- Place all API functions in a dedicated top-level directory: `src/api/`.
+- Organize API functions by domain/entity (e.g., `src/api/users/`, `src/api/products/`).
+- Each domain should have an `index.ts` file that exports all API functions.
+- API functions should follow a consistent naming convention (e.g., `fetchUsersApi`, `createUserApi`).
+- API functions should handle basic error responses and return properly typed data.
+- Use the environment variable `VITE_API_BASE_URL` for the API base URL.
+- Import API functions in sagas using absolute imports: `import { fetchUsersApi } from '@/api/users'`.
 
 ## Environment Variables
 Use environment variables consistently for mocks, endpoints, and feature flags.

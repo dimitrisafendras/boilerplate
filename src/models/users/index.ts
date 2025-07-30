@@ -1,7 +1,6 @@
-export * from './hooks';
-export * from './selectors';
-export * from './slice';
-export * from './saga';
+export * from "./hooks";
+export * from "./selectors";
+export * from "./slice";
+export * from "./sagas";
 
-import { userReducer } from './slice';
-export { userReducer };
+export { userReducer } from "./slice";
