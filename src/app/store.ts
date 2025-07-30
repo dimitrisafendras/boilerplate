@@ -1,19 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import createSagaMiddleware from 'redux-saga';
-import { userReducer } from '@/models/users';
-import { notificationReducer } from '@/models/notification';
-import { rootSaga } from './rootSaga';
+import { configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import { rootSaga } from "./rootSaga";
+import { rootReducer } from "./rootReducer";
 
 // Create saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-// Configure store with reducers and middleware
+// Configure store with root reducer and middleware
 export const store = configureStore({
-  reducer: {
-    users: userReducer,
-    notification: notificationReducer,
-    // Add more reducers here
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
 });
