@@ -86,6 +86,32 @@ Follow standardized testing practices with React Testing Library + Jest.
 - Run tests with `npm test`. Use `-- <path>` to target specific files.
 - Use `screen`, `waitFor`, and `userEvent` for clean test interaction logic.
 
+## CSS Modules
+Use CSS Modules for component-scoped styling to avoid style conflicts and improve maintainability.
+
+- Name CSS module files with the `.module.css` extension (e.g., `component-name.module.css`).
+- Place CSS module files adjacent to their corresponding component files.
+- Import CSS modules using the following syntax: `import styles from './component-name.module.css'`.
+- Apply CSS module classes using the `className={styles.className}` syntax.
+- Use camelCase for CSS class names to ensure consistent JavaScript property access.
+- Leverage CSS variables from the theme system for colors, spacing, and typography.
+- For dynamic class names, use template literals or the classnames library:
+
+  Using template literals:
+  ```
+  className={`${styles.base} ${isActive ? styles.active : ''}`}
+  ```
+  
+  Using classnames library:
+  ```
+  import classNames from 'classnames';
+  className={classNames(styles.base, { [styles.active]: isActive })}
+  ```
+
+- Keep CSS modules focused on component-specific styling; use global styles for app-wide concerns.
+- TypeScript support for CSS modules is provided via the `css-modules.d.ts` file.
+- CSS modules support is also available for SCSS, SASS, and LESS with the appropriate extensions.
+
 ## UI Components & Ant Design
 Use Ant Design as the primary UI component library for consistent user experience.
 
@@ -95,7 +121,7 @@ Use Ant Design as the primary UI component library for consistent user experienc
 - Follow Ant Design's form patterns and validation approach.
 - Use Ant Design's `Typography` components for text elements.
 - Customize theme through the `ConfigProvider` in main.tsx only.
-- For custom styling, use CSS modules or styled-components with Ant Design's design tokens.
+- For custom styling, use CSS modules with Ant Design's design tokens.
 - Refer to the [Ant Design documentation](https://ant.design/components/overview/) for component usage guidelines.
 
 ## Code Style & Conventions
