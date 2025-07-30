@@ -4,9 +4,7 @@ import type { ThemeConfig } from "antd";
  * Component-specific theme overrides for Ant Design components
  */
 export const components: ThemeConfig["components"] = {
-  Button: {
-    // colorPrimary: '#646cff',
-  },
+  Button: {},
 
   Card: {
     colorBorderSecondary: "#f0f0f0",
