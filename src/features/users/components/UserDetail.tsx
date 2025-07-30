@@ -9,6 +9,7 @@ import {
   ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { useUsers } from "@/models/users";
+import styles from "./users.module.css";
 
 const { Title } = Typography;
 
@@ -25,7 +26,7 @@ export const UserDetail: React.FC = () => {
   if (loading)
     return (
       <Spin size="large" tip="Loading user details...">
-        <div className="spinner-container" />
+        <div className={styles.spinnerContainer} />
       </Spin>
     );
   if (error)

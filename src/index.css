@@ -41,31 +41,3 @@ body {
   margin: 0 auto;
 }
 
-/* Component-specific styles */
-.spinner-container {
-  height: 100px;
-  width: 100%;
-}
-
-.code-block {
-  background-color: var(--color-bg-light);
-  padding: var(--spacing-md);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-sm);
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.masonry-layout {
-  /* columnCount and columnGap are set inline because they're dynamic */
-}
-
-.masonry-card {
-  margin-bottom: var(--spacing-md);
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-
-.avatar-icon {
-  font-size: var(--font-size-xl);
-}

@@ -1,0 +1,18 @@
+.codeBlock {
+  background-color: var(--color-bg-light);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.masonryLayout {
+  /* columnCount and columnGap are set inline because they're dynamic */
+}
+
+.masonryCard {
+  margin-bottom: var(--spacing-md);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}

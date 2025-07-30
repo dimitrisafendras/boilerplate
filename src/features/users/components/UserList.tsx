@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { List, Typography, Spin, Alert, Card } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useUsers } from "@/models/users";
+import styles from "./users.module.css";
 
 const { Title } = Typography;
 
@@ -16,7 +17,7 @@ export const UserList: React.FC = () => {
   if (loading)
     return (
       <Spin size="large" tip="Loading users...">
-        <div className="spinner-container" />
+        <div className={styles.spinnerContainer} />
       </Spin>
     );
   if (error)
@@ -32,7 +33,7 @@ export const UserList: React.FC = () => {
         renderItem={(user) => (
           <List.Item>
             <List.Item.Meta
-              avatar={<UserOutlined className="avatar-icon" />}
+              avatar={<UserOutlined className={styles.avatarIcon} />}
               title={<Link to={`/users/${user.id}`}>{user.name}</Link>}
               description={`${user.email} (${user.role})`}
             />

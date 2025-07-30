@@ -21,6 +21,7 @@ import {
   BellOutlined,
 } from "@ant-design/icons";
 import { useNotifications } from "@/models/notification";
+import styles from "./home.module.css";
 
 const { Title, Paragraph, Text } = Typography;
 const { Content } = Layout;
@@ -493,7 +494,7 @@ export const Home: React.FC = () => {
           {/* Left side - Directory Structure */}
           <Col xs={24} md={10} lg={8}>
             <Card title="Directory Structure" className="mb-lg">
-              <pre className="code-block">{directoryStructure}</pre>
+              <pre className={styles.codeBlock}>{directoryStructure}</pre>
             </Card>
           </Col>
 
@@ -583,7 +584,7 @@ export const Home: React.FC = () => {
             </Card>
 
             <div
-              className="masonry-layout"
+              className={styles.masonryLayout}
               style={{
                 columnCount: columns,
                 columnGap: "16px",
@@ -599,7 +600,7 @@ export const Home: React.FC = () => {
                     </Space>
                   }
                   hoverable
-                  className="masonry-card"
+                  className={styles.masonryCard}
                 >
                   {item.content}
                 </Card>

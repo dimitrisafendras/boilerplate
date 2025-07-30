@@ -1,0 +1,8 @@
+.spinnerContainer {
+  height: 100px;
+  width: 100%;
+}
+
+.avatarIcon {
+  font-size: var(--font-size-xl);
+}
