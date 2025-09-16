@@ -10,7 +10,6 @@ interface RenderOptions {
   store?: ReturnType<typeof configureStore>;
   routerOptions?: {
     path?: string;
-    future?: { v7_startTransition?: boolean };
   };
 }
 
@@ -25,7 +24,7 @@ export function renderWithProviders(
   {
     preloadedState = {},
     store = undefined,
-    routerOptions = { path: "/", future: { v7_startTransition: true } },
+    routerOptions = { path: "/" },
   }: RenderOptions = {},
 ) {
   const testStore = store || appStore;
@@ -50,7 +49,7 @@ export function renderWithProviders(
   return {
     ...render(
       <Provider store={testStore}>
-        <RouterProvider router={router} future={routerOptions.future} />
+        <RouterProvider router={router} />
       </Provider>,
     ),
     store: testStore,
